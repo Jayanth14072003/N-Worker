@@ -83,7 +83,7 @@ async def start_command(client: Client, message: Message):
             except:
                 pass
         return
-        await asyncio.sleep(30)
+        await asyncio.sleep(10)
         await naa.delete()
         await na.delete()
     else:
