@@ -47,7 +47,9 @@ async def channel_post(client: Client, message: Message):
     # fname = prefname.split('S')[0]
     ena=str(re.findall(r"E\d+",str(message.video.file_name)))
     en=str(re.findall(r"\d+",ena))
+    dm ={"Jan":"01","Feb":"02","Mar":"03","Apr":"04","May":"05","Jun":"06","Jul":"07","Aug":"08","Sep":"09","Oct":"10","Nov":"11","Dec":"12"}
     reply_text = await message.reply_photo(photo=fun(en)[0],caption="Please wait...")
+    month = fun(en)[1][2:-6]+"-"+dm[date]+"- 2023"
     en = None
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
@@ -65,8 +67,8 @@ async def channel_post(client: Client, message: Message):
     link = get_short(tlink)
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=link)]]) 
-    
-    await reply_text.edit(f"<b>Here is your link \n{tlink}\n{fun("1130")[1][2:-6]+"-"+dm[date]+"- 2023"}\nPri᥎ᥲᴛᥱ ᥣiᥒκ 🔗\n<code>{tlink}</code> \n\n<b>𐍃ɦ᧐rᴛ ᥣiᥒκ😎</b>\n<code>{link}</code></b>")
+
+    await reply_text.edit(f"<b>Here is your link \n{tlink}\n{month}\nPri᥎ᥲᴛᥱ ᥣiᥒκ 🔗\n<code>{tlink}</code> \n\n<b>𐍃ɦ᧐rᴛ ᥣiᥒκ😎</b>\n<code>{link}</code></b>")
 
     if not DISABLE_CHANNEL_BUTTON:
         await post_message.edit_reply_markup(reply_markup)
