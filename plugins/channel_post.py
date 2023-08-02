@@ -46,7 +46,7 @@ async def channel_post(client: Client, message: Message):
     # prefname = re.sub(r'(_)', ' ', str(message.video.file_name))
     # fname = prefname.split('S')[0]
     ena=str(re.findall(r"E\d+",str(message.video.file_name)))
-    en=re.findall(r"\d+",ena)
+    en=str(re.findall(r"\d+",ena))
     reply_text = await message.reply_photo(photo=fun(en)[0],caption="Please wait...")
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
