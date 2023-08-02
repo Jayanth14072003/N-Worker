@@ -50,7 +50,6 @@ async def channel_post(client: Client, message: Message):
     dm ={"Jan":"01","Feb":"02","Mar":"03","Apr":"04","May":"05","Jun":"06","Jul":"07","Aug":"08","Sep":"09","Oct":"10","Nov":"11","Dec":"12"}
     reply_text = await message.reply_photo(photo=fun(en)[0],caption="Please wait...")
     month = fun(en)[1][2:-6]+"-"+dm[date]+"- 2023"
-    en = None
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
     except FloodWait as e:
