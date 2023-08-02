@@ -9,4 +9,3 @@ dnspython
 aiohttp
 requests
 bs4
-re
