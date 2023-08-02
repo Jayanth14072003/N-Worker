@@ -73,7 +73,8 @@ async def start_command(client: Client, message: Message):
                 global na
                 na = await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
                 global naa
-                await asyncio.sleep(0.5)
+                await asyncio.sleep(3600)
+                await na.delete()                
                 
             except FloodWait as e:
                 await asyncio.sleep(e.x)
@@ -82,12 +83,12 @@ async def start_command(client: Client, message: Message):
             except:
                 pass
         return
-        naa = await client.send_message(chat_id=message.chat.id, text=f"<b>ಈ ಫೈಲ್ ಒಂದು ಗಂಟೆಯ ನಂತರ ಡಿಲೀಟ್ ಆಗುತ್ತದೆ, ಆದ್ದರಿಂದ ಈ ಫೈಲ್ ಅನ್ನು ಫಾರ್ವರ್ಡ್ ಅಥವಾ ಸೇವ್ ಮಾಡಿಕೊಳ್ಳಿ</b>")
-        # await msg.edit(f"<b>ಈ ಫೈಲ್ ಒಂದು ಗಂಟೆಯ ನಂತರ ಡಿಲೀಟ್ ಆಗುತ್ತದೆ, ಆದ್ದರಿಂದ ಈ ಫೈಲ್ ಅನ್ನು ಫಾರ್ವರ್ಡ್ ಅಥವಾ ಸೇವ್ ಮಾಡಿಕೊಳ್ಳಿ</b>")
-        # naa = await na.reply_text(f"<b>ಈ ಫೈಲ್ ಒಂದು ಗಂಟೆಯ ನಂತರ ಡಿಲೀಟ್ ಆಗುತ್ತದೆ, ಆದ್ದರಿಂದ ಈ ಫೈಲ್ ಅನ್ನು ಫಾರ್ವರ್ಡ್ ಅಥವಾ ಸೇವ್ ಮಾಡಿಕೊಳ್ಳಿ</b>", quote=True, reply_markup=reply_markup)
-        await asyncio.sleep(10)
-        await naa.delete()
-        await na.delete()
+        # naa = await client.send_message(chat_id=message.chat.id, text=f"<b>ಈ ಫೈಲ್ ಒಂದು ಗಂಟೆಯ ನಂತರ ಡಿಲೀಟ್ ಆಗುತ್ತದೆ, ಆದ್ದರಿಂದ ಈ ಫೈಲ್ ಅನ್ನು ಫಾರ್ವರ್ಡ್ ಅಥವಾ ಸೇವ್ ಮಾಡಿಕೊಳ್ಳಿ</b>")
+        # # await msg.edit(f"<b>ಈ ಫೈಲ್ ಒಂದು ಗಂಟೆಯ ನಂತರ ಡಿಲೀಟ್ ಆಗುತ್ತದೆ, ಆದ್ದರಿಂದ ಈ ಫೈಲ್ ಅನ್ನು ಫಾರ್ವರ್ಡ್ ಅಥವಾ ಸೇವ್ ಮಾಡಿಕೊಳ್ಳಿ</b>")
+        # # naa = await na.reply_text(f"<b>ಈ ಫೈಲ್ ಒಂದು ಗಂಟೆಯ ನಂತರ ಡಿಲೀಟ್ ಆಗುತ್ತದೆ, ಆದ್ದರಿಂದ ಈ ಫೈಲ್ ಅನ್ನು ಫಾರ್ವರ್ಡ್ ಅಥವಾ ಸೇವ್ ಮಾಡಿಕೊಳ್ಳಿ</b>", quote=True, reply_markup=reply_markup)
+        # await asyncio.sleep(10)
+        # await naa.delete()
+        # await na.delete()
     else:
         reply_markup = InlineKeyboardMarkup(
             [
