@@ -12,7 +12,7 @@ import requests as ree
 from bs4 import BeautifulSoup
 import re
 
-async def fun(a):
+def fun(a):
     url = ('https://www.zee5.com/tv-shows/details/gattimela/0-6-1392/episodes')
 
     response = ree.get(url)
@@ -26,16 +26,13 @@ async def fun(a):
         s=str(i)
         if re.search(en1,s):
             p = str(re.findall('https://+.*."\st',s))
-            global photo
             photo = re.sub("w_+.*eco/","", p[2:-5])
             break
     en2 = "E"+a
     for i in episode_element1:
         ss=str(i)
         if re.search(en2,ss):
-            global d
             d = str(re.findall("\d+\s\w+",ss))
-            global date
             date = d[-5:-2]
             break
             
