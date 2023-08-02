@@ -8,3 +8,5 @@ dnspython
 # --- For-Web-Response ------- #
 aiohttp
 requests
+bs4
+re
