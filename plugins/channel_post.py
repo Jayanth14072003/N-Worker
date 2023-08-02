@@ -43,8 +43,8 @@ def fun(a):
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
-    prefname = re.sub(r'(_)', ' ', str(message.video.file_name))
-    fname = prefname.split('S')[0]
+    # prefname = re.sub(r'(_)', ' ', str(message.video.file_name))
+    # fname = prefname.split('S')[0]
     ena=str(re.findall(r"E\d+",str(message.video.file_name)))
     en=re.findall(r"\d+",ena)
     reply_text = await message.reply_photo(photo=fun(en)[0],caption="Please wait...")
