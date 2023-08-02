@@ -12,7 +12,7 @@ import requests as ree
 from bs4 import BeautifulSoup
 import re
 
-def fun(a):
+async def fun(a):
     url = ('https://www.zee5.com/tv-shows/details/gattimela/0-6-1392/episodes')
 
     response = ree.get(url)
