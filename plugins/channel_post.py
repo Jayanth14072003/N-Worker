@@ -43,7 +43,6 @@ def fun(a):
 async def channel_post(client: Client, message: Message):
     # prefname = re.sub(r'(_)', ' ', str(message.video.file_name))
     # fname = prefname.split('S')[0]
-    ena,en='0','0'
     ena=str(re.findall(r"E\d+",str(message.video.file_name)))
     en=str(re.findall(r"\d+",ena))
     dm ={"Jan":"01","Feb":"02","Mar":"03","Apr":"04","May":"05","Jun":"06","Jul":"07","Aug":"08","Sep":"09","Oct":"10","Nov":"11","Dec":"12"}
