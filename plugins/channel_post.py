@@ -27,6 +27,7 @@ def fun(a):
         if re.search(en1,s):
             p = str(re.findall('https://+.*."\st',s))
             photo = re.sub("w_+.*eco/","", p[2:-5])
+            return photo
             break
     en2 = "E"+a
     for i in episode_element1:
@@ -42,6 +43,7 @@ def fun(a):
 async def channel_post(client: Client, message: Message):
     # prefname = re.sub(r'(_)', ' ', str(message.video.file_name))
     # fname = prefname.split('S')[0]
+    ena,en=None,None
     ena=str(re.findall(r"E\d+",str(message.video.file_name)))
     en=str(re.findall(r"\d+",ena))
     dm ={"Jan":"01","Feb":"02","Mar":"03","Apr":"04","May":"05","Jun":"06","Jul":"07","Aug":"08","Sep":"09","Oct":"10","Nov":"11","Dec":"12"}
