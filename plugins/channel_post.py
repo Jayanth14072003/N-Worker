@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 import re
 
 def fun(a):
-    url = ('https://www.zee5.com/tv-shows/details/gattimela/0-6-1392/episodes')
+    url = ('https://www.zee5.com/tv-shows/details/puttakkana-makkalu/0-6-3506')
 
     response = ree.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
