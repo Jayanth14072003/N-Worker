@@ -57,25 +57,25 @@ async def start_command(client: Client, message: Message):
             return
         await temp_msg.delete()
         
-        for msg in messages:
+        for msg in range(Len(messages)):
 
-            if bool(CUSTOM_CAPTION) & (bool(msg.document) or bool(msg.video)):
-                media = msg.video or msg.document
-                caption = CUSTOM_CAPTION.format(previouscaption = "" if not msg.caption else msg.caption.html, filename = media.file_name)
+            if bool(CUSTOM_CAPTION) & (bool(messages[msg].document) or bool(messages[msg].video)):
+                media = messages[msg].video or messages[messages[msg]].document
+                caption = CUSTOM_CAPTION.format(previouscaption = "" if not messages[msg].caption else messages[msg].caption.html, filename = media.file_name)
             else:
-                caption = "" if not msg.caption else msg.caption.html
+                caption = "" if not messages[msg].caption else messages[msg].caption.html
 
             if DISABLE_CHANNEL_BUTTON:
-                reply_markup = msg.reply_markup
+                reply_markup = messages[msg].reply_markup
             else:
                 reply_markup = None
 
             try:
-                files.append(await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT))
+                files.append(await messages[msg].copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT))
                 
             except FloodWait as e:
                 await asyncio.sleep(e.x)
-                files.append(await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT))
+                files.append(await messages[msg].copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT))
             except:
                 pass
         rm = await client.send_message(chat_id=message.chat.id, text=f"<b>ಈ ಫೈಲ್ ಒಂದು ಗಂಟೆಯ ನಂತರ ಡಿಲೀಟ್ ಆಗುತ್ತದೆ, ಆದ್ದರಿಂದ ಈ ಫೈಲ್ ಅನ್ನು ಫಾರ್ವರ್ಡ್ ಅಥವಾ ಸೇವ್ ಮಾಡಿಕೊಳ್ಳಿ</b>")
