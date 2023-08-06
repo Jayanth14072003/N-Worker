@@ -20,23 +20,23 @@ Sample output(bunch link)
 async def notify(client: Client, message: Message):
 
     link1=''
-        while 1:
-            #kannada serials link
-            url = ('https://www.zee5.com/tv-shows/collections/before-tv-episodes-zee-kannada/0-8-670')
+    while 1:
+        #kannada serials link
+        url = ('https://www.zee5.com/tv-shows/collections/before-tv-episodes-zee-kannada/0-8-670')
     
-            response = ree.get(url)
-            soup = BeautifulSoup(response.content, 'html.parser')
+        response = ree.get(url)
+        soup = BeautifulSoup(response.content, 'html.parser')
     
-            # Find the HTML element that contains information about the latest episode
-            episode_element = soup.find_all("a", class_="noSelect content", href=True)
+        # Find the HTML element that contains information about the latest episode
+        episode_element = soup.find_all("a", class_="noSelect content", href=True)
             
-            #here we check the episode is new or not 
-            if link1 != episode_element[0]:
-                link = episode_element[0]
-                globals()['link1']=link
+        #here we check the episode is new or not 
+        if link1 != episode_element[0]:
+            link = episode_element[0]
+            globals()['link1']=link
     
-                #here we extract the perticuler episode link 
-                b=str(link['href'])
-                rm = await client.send_message(chat_id=message.chat.id, text=f"https://www.zee5.com{b}")
+            #here we extract the perticuler episode link 
+            b=str(link['href'])
+            rm = await client.send_message(chat_id=message.chat.id, text=f"https://www.zee5.com{b}")
                 
 notify()
