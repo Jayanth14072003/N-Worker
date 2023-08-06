@@ -39,7 +39,7 @@ async def notify(client: Client, message: Message):
         for i in newlist:
             link1.append(i)
             b=str(i)
-            client.send_message(message.chat.id, f"https://www.zee5.com{b}")
+            await client.send_message(message.chat.id, f"https://www.zee5.com{b}")
             # print(f"https://www.zee5.com{b}\n\n")
             await asyncio.sleep(5)
             
