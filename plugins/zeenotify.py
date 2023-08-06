@@ -1,3 +1,11 @@
+#for sending msg to telegram 
+from bot import Bot
+import asyncio
+from pyrogram import filters, Client
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from config import ADMINS
+
+#for extract the new episode link
 import requests as ree
 from bs4 import BeautifulSoup
 # import re
@@ -8,24 +16,27 @@ Sample output(bunch link)
 
 '''
 
-link1=''
-def fun():
-    while 1:
-        #kannada serials link
-        url = ('https://www.zee5.com/tv-shows/collections/before-tv-episodes-zee-kannada/0-8-670')
+@Bot.on_message(filters.private & filters.user(ADMINS) & filters.command('notify'))
+async def notify(client: Client, message: Message):
 
-        response = ree.get(url)
-        soup = BeautifulSoup(response.content, 'html.parser')
-
-        # Find the HTML element that contains information about the latest episode
-        episode_element = soup.find_all("a", class_="noSelect content", href=True)
-        
-        #here we check the episode is new or not 
-        if link1 != episode_element[0]:
-            link = episode_element[0]
-            globals()['link1']=link
-
-            #here we extract the perticuler episode link 
-            b=str(link['href'])
-            "https://www.zee5.com"+b
-fun()
+    link1=''
+        while 1:
+            #kannada serials link
+            url = ('https://www.zee5.com/tv-shows/collections/before-tv-episodes-zee-kannada/0-8-670')
+    
+            response = ree.get(url)
+            soup = BeautifulSoup(response.content, 'html.parser')
+    
+            # Find the HTML element that contains information about the latest episode
+            episode_element = soup.find_all("a", class_="noSelect content", href=True)
+            
+            #here we check the episode is new or not 
+            if link1 != episode_element[0]:
+                link = episode_element[0]
+                globals()['link1']=link
+    
+                #here we extract the perticuler episode link 
+                b=str(link['href'])
+                rm = await client.send_message(chat_id=message.chat.id, text=f"https://www.zee5.com{b}")
+                
+notify()
