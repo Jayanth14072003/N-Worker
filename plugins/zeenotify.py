@@ -18,7 +18,6 @@ Sample output(bunch link)
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & filters.command('notify'))
 async def notify(client: Client, message: Message):
-
     link1=''
     while 1:
         #kannada serials link
@@ -37,6 +36,6 @@ async def notify(client: Client, message: Message):
     
             #here we extract the perticuler episode link 
             b=str(link['href'])
-            rm = await client.send_message(chat_id=message.chat.id, text=f"https://www.zee5.com{b}")
+            await client.send_message(chat_id=message.chat.id, text=f"https://www.zee5.com{b}")
                 
 # notify()
