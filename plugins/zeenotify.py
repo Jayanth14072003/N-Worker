@@ -8,10 +8,6 @@ from config import ADMINS
 #for extract the new episode link
 import requests as ree
 from bs4 import BeautifulSoup
-
-
-import requests as ree
-from bs4 import BeautifulSoup
 import time
 
 '''
@@ -52,3 +48,4 @@ def fun():
         duplicatelist=list(duplicatelinks)
         for j in duplicatelist:
             link1.remove(j)
+        Client.send
