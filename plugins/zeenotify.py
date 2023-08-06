@@ -39,4 +39,4 @@ async def notify(client: Client, message: Message):
             b=str(link['href'])
             rm = await client.send_message(chat_id=message.chat.id, text=f"https://www.zee5.com{b}")
                 
-notify()
+# notify()
