@@ -1,6 +1,6 @@
 import requests as ree
 from bs4 import BeautifulSoup
-import re
+# import re
 '''
 Sample output(bunch link)
 <a class="noSelect content" data-minutelytitle="Dance Karnataka Dance Season 7 - August 06, 2023" href="/tv-shows/details/dance-karnataka-dance-season-7/0-6-4z5349291/dance-karnataka-dance-season-7-august-06-2023/0-1-6z5403327"><img alt="Dance Karnataka Dance Season 7 - August 06, 2023 Episode 30" crossorigin="anonymous" src="https://akamaividz2.zee5.com/image/upload/w_522,h_294,c_scale,f_webp,q_auto:eco/resources/0-1-6z5403327/list/0000015567f16274865e439785f652b73fc99ff5.jpg" title="Dance Karnataka Dance Season 7 - August 06, 2023 Episode 30" width="100%"/></a>
@@ -24,9 +24,8 @@ def fun():
         if link1 != episode_element[0]:
             link = episode_element[0]
             globals()['link1']=link
-            
+
+            #here we extract the perticuler episode link 
             b=str(link['href'])
-            titl=str(link.find('title'))
-            print(titl)
-            print("https://www.zee5.com"+b)
+            "https://www.zee5.com"+b
 fun()
