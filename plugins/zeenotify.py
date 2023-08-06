@@ -39,9 +39,9 @@ async def notify(client: Client, message: Message):
         for i in newlist:
             link1.append(i)
             b=str(i)
-            bot.send_message(message.chat.id, f"https://www.zee5.com{b}")
+            client.send_message(message.chat.id, f"https://www.zee5.com{b}")
             # print(f"https://www.zee5.com{b}\n\n")
-            .sleep(2)
+            await asyncio.sleep(5)
             
         #here we delete the old episode link(premium free)
         duplicatelinks = set(link1).difference(set(listlink))
