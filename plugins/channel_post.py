@@ -51,6 +51,7 @@ async def notify(client: Client, message: Message):
         duplicatelist=list(duplicatelinks)
         for j in duplicatelist:
             link1.remove(j)
+        return notify(Client,Message)
             
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.text & ~filters.command(['start','users','broadcast','batch','genlink','stats']))
 async def channel_post(client: Client, message: Message):
