@@ -19,7 +19,7 @@ link1=[1]
 listlink=[1]
 @Bot.on_message(filters.private & filters.user(ADMINS) & filters.command('notify'))
 async def notify(client: Client, message: Message):
-    while 1:
+    while True:
         #kannada serials link
         url = ('https://www.zee5.com/tv-shows/collections/before-tv-episodes-zee-kannada/0-8-670')
 
@@ -48,4 +48,3 @@ async def notify(client: Client, message: Message):
         duplicatelist=list(duplicatelinks)
         for j in duplicatelist:
             link1.remove(j)
-        Client.send
